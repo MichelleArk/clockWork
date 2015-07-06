@@ -16,28 +16,25 @@ for(var i = 0; i < x.length; i++){
     
         var price = Number(res);
 
-        var numYears;
-        var numDays;
-        var numHours;
-    
-        if(price%yearlyWage){
-                numYears = Math.floor(price/yearlyWage);
-                price = price%yearlyWage;
-        }
+        // check string converted into a real price value
+        if(!(isNaN(price))){
+            var numYears;
+            var numDays;
+            var numHours;
         
-        if(price%dailyWage){
-                numDays = Math.floor(price/dailyWage);
-                price = price%dailyWage;
-        }
-        
-        if(price%hourlyWage){
-                numHours = Math.floor(price/hourlyWage);
-        }
-        
-        var outputString = numHours + " Hours";
-        if(numDays != 0){
-            outputString = numDays + " Day(s) and " + outputString;
-        }
+            numYears = Math.floor(price/yearlyWage);
+            price = price%yearlyWage;
 
-        x[i].innerHTML = outputString;
+            numDays = Math.floor(price/dailyWage);
+            price = price%dailyWage;
+
+            numHours = Math.floor(price/hourlyWage);
+            
+            var outputString = numHours + " Hours";
+            if(numDays != 0){
+                outputString = numDays + " Day(s) and " + outputString;
+            }
+
+            x[i].innerHTML = outputString;
+        }
 }
