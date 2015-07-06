@@ -34,5 +34,10 @@ for(var i = 0; i < x.length; i++){
                 numHours = Math.floor(price/hourlyWage);
         }
         
-        x[i].innerHTML = numDays + " Day(s) and " + numHours + " Hours";
+        var outputString = numHours + " Hours";
+        if(numDays != 0){
+            outputString = numDays + " Day(s) and " + outputString;
+        }
+
+        x[i].innerHTML = outputString;
 }
