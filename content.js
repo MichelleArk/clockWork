@@ -1,5 +1,14 @@
-var x = document.getElementsByClassName("price");
-for(var i = 0; i < x.length; i++){
+chrome.storage.sync.get("hourlyWage", function(response){
+    var hourlyWage = Number(response.hourlyWage);
+    console.log(hourlyWage);
+    var workingHours = 7.5;
+    var dailyWage = hourlyWage * workingHours;
+    var yearlyWage = dailyWage * 251;
+    var minuteWage = hourlyWage / 60;
+    var secondWage = minuteWage / 60;
+    
+    var x = document.getElementsByClassName("price");
+    for(var i = 0; i < x.length; i++){
         var str = x[i].innerHTML;
         var res = str.replace(",","");
 
@@ -7,12 +16,6 @@ for(var i = 0; i < x.length; i++){
         var results = res.match(regex);    	
         res = results[0];
 
-        var hourlyWage = 25;
-        var workingHours = 7.5;
-        var dailyWage = hourlyWage * workingHours;
-        var yearlyWage = dailyWage * 251;
-    	var minuteWage = hourlyWage / 60;
-        var secondWage = minuteWage / 60;
         var price = Number(res);
 
         // check string converted into a real price value
@@ -53,4 +56,5 @@ for(var i = 0; i < x.length; i++){
             }
             x[i].innerHTML = outputString;
         }
-}
+    }
+});
