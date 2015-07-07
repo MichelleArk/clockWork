@@ -18,7 +18,7 @@ function restore_options() {
   chrome.storage.sync.get({
     hourlyWage: 25,
   }, function(items) {
-    document.getElementById('hourly').value = items.favoriteColor;
+    document.getElementById('hourly').value = 25;
   });
 }
 document.addEventListener('DOMContentLoaded', restore_options);
