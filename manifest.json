@@ -3,6 +3,9 @@
 	"name": "clockWork",
 	"version": "1.0",
     "options_page": "options.html",
+    "permissions": [
+          "storage"
+    ],
 
 	"content_scripts": [
 	  {
