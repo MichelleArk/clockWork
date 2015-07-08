@@ -35,14 +35,24 @@ chrome.storage.sync.get("hourlyWage", function(response){
             price = price%hourlyWage;
 
             numMinutes = Math.floor(price/minuteWage);
-            price = price%minuteWage
+            price = price%minuteWage;
 
             numSeconds = Math.floor(price/secondWage);
-     
-            var secondString = numSeconds + " Second(s)"
-            var minutesString = numMinutes + " Minute(s)";
-            var hoursString = numHours + " Hour(s)";
-            var daysString = numDays + " Day(s)"
+     	    
+            var secondString = numSeconds + " Seconds";
+            var minutesString = numMinutes + " Minutes";
+            var hoursString = numHours + " Hours";
+            var daysString = numDays + " Days";
+
+	    if(numSeconds == 1){
+	    	secondString = secondString.substring(0, secondString.length - 1);
+	    } else if(numMinutes == 1){
+	    	minutesString = minutesString.substring(0, minutesString.length -1);
+	    } else if(numHours == 1){
+	    	hoursString = hoursString.substring(0, hoursString.length -1);
+	    } else if(numDays == 1){
+	    	daysString = daysString.substring(0,daysString.length -1);
+	    }
 
             var outputString;
             if(numDays != 0){
